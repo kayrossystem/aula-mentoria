@@ -42,3 +42,7 @@ coverage/
 tmp/
 temp/
 *.tmp
+
+# Zip files e Mac artifacts
+*.zip
+__MACOSX/
