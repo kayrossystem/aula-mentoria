@@ -12,33 +12,205 @@
 </head>
 <body>
 
-  <!-- HERO -->
+  <!-- ======= HERO ======= -->
   <section class="hero">
-    <div class="container">
-      <div class="badge">🤖 Protocolo de Conversão Humana™</div>
-      <h1 class="headline">
-        Seu Lead Vai Achar que Está<br />
-        <span class="blue-text">Falando com um Humano.</span>
-      </h1>
-      <p class="subheadline">
-        O KAIROS usa Delay Comportamental + Perfil DISC + Linguagem PNL para qualificar e fechar seus leads automaticamente — sem que eles percebam que é IA.
-      </p>
-      <p class="sub2">
-        Enquanto outros bots afastam leads com respostas robóticas e sem alma…<br />
-        o KAIROS conduz conversas que <strong>parecem humanas</strong> — porque foram construídas para se comportar como humanas.
-      </p>
-      <a href="#cta" class="btn-cta">QUERO ATIVAR O KAIROS AGORA →</a>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">+42</span><span class="stat-label">Reuniões qualificadas / 30 dias</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">3x</span><span class="stat-label">Mais respostas em leads frios</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">70%</span><span class="stat-label">Redução no atendimento manual</span></div>
+    <div class="container hero-grid">
+
+      <!-- LEFT: Text -->
+      <div class="hero-text">
+        <div class="badge">🤖 Protocolo de Conversão Humana™</div>
+        <h1 class="headline">
+          Seu Lead Vai Achar<br />que Está Falando<br />
+          <span class="blue-text">com um Humano.</span>
+        </h1>
+        <p class="subheadline">
+          O KAIROS usa Delay Comportamental + Perfil DISC + Linguagem PNL para qualificar e fechar seus leads — sem que percebam que é IA.
+        </p>
+
+        <!-- COUNTDOWN -->
+        <div class="countdown-box">
+          <span class="cd-label">⚡ Vagas disponíveis encerram em:</span>
+          <div class="countdown-timer">
+            <div class="time-block"><span id="cd-h">23</span><small>HRS</small></div>
+            <div class="time-sep">:</div>
+            <div class="time-block"><span id="cd-m">59</span><small>MIN</small></div>
+            <div class="time-sep">:</div>
+            <div class="time-block"><span id="cd-s">59</span><small>SEG</small></div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/5511999999999?text=Quero%20ativar%20o%20KAIROS%20AI" class="btn-cta" target="_blank">
+          QUERO ATIVAR O KAIROS AGORA →
+        </a>
+
+        <div class="vagas-bar">
+          <span class="vagas-text">🔴 Apenas <strong id="vagas-count">7</strong> vagas restantes este mês</span>
+          <div class="vagas-progress"><div class="vagas-fill" id="vagas-fill"></div></div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">+42</span><span class="stat-label">Reuniões / 30 dias</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">3x</span><span class="stat-label">Mais respostas</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">70%</span><span class="stat-label">Menos atendimento manual</span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Luxury Machine Visual -->
+      <div class="hero-visual">
+        <div class="machine-wrapper" id="machine-wrapper">
+
+          <!-- GEAR LEFT -->
+          <div class="gear-orbit gear-left-orbit">
+            <svg class="gear gear-spin-cw" viewBox="0 0 120 120">
+              <g transform="translate(60,60)">
+                <circle r="28" fill="#0A1428" stroke="#C9A84C" stroke-width="1.5"/>
+                <circle r="12" fill="#050814" stroke="#C9A84C" stroke-width="1"/>
+                <circle r="4" fill="#C9A84C"/>
+                <!-- 10 teeth -->
+                <g id="teeth-l">
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C"/>
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C" transform="rotate(36)"/>
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C" transform="rotate(72)"/>
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C" transform="rotate(108)"/>
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C" transform="rotate(144)"/>
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C" transform="rotate(180)"/>
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C" transform="rotate(216)"/>
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C" transform="rotate(252)"/>
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C" transform="rotate(288)"/>
+                  <rect x="-5" y="-48" width="10" height="14" rx="2" fill="#C9A84C" transform="rotate(324)"/>
+                </g>
+                <!-- spokes -->
+                <line x1="0" y1="-12" x2="0" y2="-28" stroke="#C9A84C" stroke-width="2"/>
+                <line x1="0" y1="-12" x2="0" y2="-28" stroke="#C9A84C" stroke-width="2" transform="rotate(72)"/>
+                <line x1="0" y1="-12" x2="0" y2="-28" stroke="#C9A84C" stroke-width="2" transform="rotate(144)"/>
+                <line x1="0" y1="-12" x2="0" y2="-28" stroke="#C9A84C" stroke-width="2" transform="rotate(216)"/>
+                <line x1="0" y1="-12" x2="0" y2="-28" stroke="#C9A84C" stroke-width="2" transform="rotate(288)"/>
+              </g>
+            </svg>
+          </div>
+
+          <!-- GEAR RIGHT -->
+          <div class="gear-orbit gear-right-orbit">
+            <svg class="gear gear-spin-ccw" viewBox="0 0 100 100">
+              <g transform="translate(50,50)">
+                <circle r="22" fill="#0A1428" stroke="#1565FF" stroke-width="1.5"/>
+                <circle r="9" fill="#050814" stroke="#4A9EFF" stroke-width="1"/>
+                <circle r="3" fill="#4A9EFF"/>
+                <rect x="-4" y="-38" width="8" height="12" rx="2" fill="#4A9EFF"/>
+                <rect x="-4" y="-38" width="8" height="12" rx="2" fill="#4A9EFF" transform="rotate(45)"/>
+                <rect x="-4" y="-38" width="8" height="12" rx="2" fill="#4A9EFF" transform="rotate(90)"/>
+                <rect x="-4" y="-38" width="8" height="12" rx="2" fill="#4A9EFF" transform="rotate(135)"/>
+                <rect x="-4" y="-38" width="8" height="12" rx="2" fill="#4A9EFF" transform="rotate(180)"/>
+                <rect x="-4" y="-38" width="8" height="12" rx="2" fill="#4A9EFF" transform="rotate(225)"/>
+                <rect x="-4" y="-38" width="8" height="12" rx="2" fill="#4A9EFF" transform="rotate(270)"/>
+                <rect x="-4" y="-38" width="8" height="12" rx="2" fill="#4A9EFF" transform="rotate(315)"/>
+                <line x1="0" y1="-9" x2="0" y2="-22" stroke="#4A9EFF" stroke-width="1.5"/>
+                <line x1="0" y1="-9" x2="0" y2="-22" stroke="#4A9EFF" stroke-width="1.5" transform="rotate(90)"/>
+                <line x1="0" y1="-9" x2="0" y2="-22" stroke="#4A9EFF" stroke-width="1.5" transform="rotate(180)"/>
+                <line x1="0" y1="-9" x2="0" y2="-22" stroke="#4A9EFF" stroke-width="1.5" transform="rotate(270)"/>
+              </g>
+            </svg>
+          </div>
+
+          <!-- WATCH CANVAS (Jacob & Co inspired) -->
+          <div class="watch-frame">
+            <canvas id="watch-canvas" width="320" height="320"></canvas>
+            <div class="watch-glow"></div>
+          </div>
+
+          <!-- LABEL -->
+          <div class="machine-label">
+            <span class="ml-brand">KAIROS</span>
+            <span class="ml-model">CONVERSION ENGINE™</span>
+            <span class="ml-swiss">SWISS PRECISION · AI POWERED</span>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PROBLEMA -->
+  <!-- ======= ENGINE SECTION (Ferrari) ======= -->
+  <section class="engine-section">
+    <div class="engine-header">
+      <span class="section-tag">Motor de Alta Performance</span>
+      <h3>A mesma precisão de um motor Ferrari.<br /><span class="blue-text">Aplicada nas suas vendas.</span></h3>
+    </div>
+    <div class="engine-track">
+      <div class="engine-stage" id="engine-stage">
+        <!-- Engine SVG animated -->
+        <svg id="ferrari-engine" viewBox="0 0 700 260" preserveAspectRatio="xMidYMid meet">
+          <!-- Engine block -->
+          <rect x="50" y="80" width="600" height="140" rx="8" fill="#080E1F" stroke="#1565FF" stroke-width="1.5"/>
+
+          <!-- Crankshaft -->
+          <line x1="50" y1="200" x2="650" y2="200" stroke="#C9A84C" stroke-width="2"/>
+
+          <!-- PISTON 1 -->
+          <g id="p1">
+            <rect id="p1-body" x="105" y="90" width="50" height="70" rx="4" fill="#0D1829" stroke="#4A9EFF" stroke-width="1.5"/>
+            <rect x="108" y="92" width="44" height="8" rx="2" fill="#4A9EFF" opacity="0.6"/>
+            <rect x="108" y="102" width="44" height="4" rx="1" fill="#C9A84C" opacity="0.5"/>
+            <text x="130" y="135" fill="#4A9EFF" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700">DISC</text>
+            <!-- Rod -->
+            <line id="p1-rod" x1="130" y1="162" x2="130" y2="196" stroke="#C9A84C" stroke-width="3"/>
+            <circle id="p1-crank" cx="130" cy="196" r="6" fill="#C9A84C"/>
+          </g>
+
+          <!-- PISTON 2 -->
+          <g id="p2">
+            <rect id="p2-body" x="230" y="90" width="50" height="70" rx="4" fill="#0D1829" stroke="#4A9EFF" stroke-width="1.5"/>
+            <rect x="233" y="92" width="44" height="8" rx="2" fill="#4A9EFF" opacity="0.6"/>
+            <rect x="233" y="102" width="44" height="4" rx="1" fill="#C9A84C" opacity="0.5"/>
+            <text x="255" y="135" fill="#4A9EFF" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700">PNL</text>
+            <line id="p2-rod" x1="255" y1="162" x2="255" y2="196" stroke="#C9A84C" stroke-width="3"/>
+            <circle id="p2-crank" cx="255" cy="196" r="6" fill="#C9A84C"/>
+          </g>
+
+          <!-- PISTON 3 -->
+          <g id="p3">
+            <rect id="p3-body" x="395" y="90" width="50" height="70" rx="4" fill="#0D1829" stroke="#4A9EFF" stroke-width="1.5"/>
+            <rect x="398" y="92" width="44" height="8" rx="2" fill="#4A9EFF" opacity="0.6"/>
+            <rect x="398" y="102" width="44" height="4" rx="1" fill="#C9A84C" opacity="0.5"/>
+            <text x="420" y="135" fill="#4A9EFF" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700">24/7</text>
+            <line id="p3-rod" x1="420" y1="162" x2="420" y2="196" stroke="#C9A84C" stroke-width="3"/>
+            <circle id="p3-crank" cx="420" cy="196" r="6" fill="#C9A84C"/>
+          </g>
+
+          <!-- PISTON 4 -->
+          <g id="p4">
+            <rect id="p4-body" x="520" y="90" width="50" height="70" rx="4" fill="#0D1829" stroke="#4A9EFF" stroke-width="1.5"/>
+            <rect x="523" y="92" width="44" height="8" rx="2" fill="#4A9EFF" opacity="0.6"/>
+            <rect x="523" y="102" width="44" height="4" rx="1" fill="#C9A84C" opacity="0.5"/>
+            <text x="545" y="135" fill="#4A9EFF" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700">CLOSE</text>
+            <line id="p4-rod" x1="545" y1="162" x2="545" y2="196" stroke="#C9A84C" stroke-width="3"/>
+            <circle id="p4-crank" cx="545" cy="196" r="6" fill="#C9A84C"/>
+          </g>
+
+          <!-- Spark indicators -->
+          <circle id="spark1" cx="130" cy="88" r="4" fill="#4A9EFF" opacity="0"/>
+          <circle id="spark2" cx="255" cy="88" r="4" fill="#4A9EFF" opacity="0"/>
+          <circle id="spark3" cx="420" cy="88" r="4" fill="#4A9EFF" opacity="0"/>
+          <circle id="spark4" cx="545" cy="88" r="4" fill="#4A9EFF" opacity="0"/>
+
+          <!-- RPM / Labels -->
+          <text x="350" y="245" fill="#7A8CA0" font-size="10" text-anchor="middle" font-family="Inter">
+            KAIROS AI ENGINE · 4 CYLINDERS · INFINITE RPM
+          </text>
+        </svg>
+
+        <!-- RPM Gauge -->
+        <div class="rpm-gauge">
+          <canvas id="rpm-canvas" width="120" height="120"></canvas>
+          <div class="rpm-label">RPM</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= PROBLEMA ======= -->
   <section class="section section-dark reveal">
     <div class="container narrow">
       <div class="section-tag">O Problema Real</div>
@@ -47,66 +219,39 @@
       <div class="problem-list">
         <div class="problem-item">
           <span class="problem-icon">⚡</span>
-          <div>
-            <strong>O bot responde em milissegundos.</strong>
-            <p>Nenhum humano faz isso. O lead percebe imediatamente.</p>
-          </div>
+          <div><strong>O bot responde em milissegundos.</strong><p>Nenhum humano faz isso. O lead percebe imediatamente.</p></div>
         </div>
         <div class="problem-item">
           <span class="problem-icon">🔄</span>
-          <div>
-            <strong>O bot usa as mesmas palavras para todo mundo.</strong>
-            <p>O lead sente que é mais um número. E desengaja.</p>
-          </div>
+          <div><strong>O bot usa as mesmas palavras para todo mundo.</strong><p>O lead sente que é mais um número. E desengaja.</p></div>
         </div>
         <div class="problem-item">
           <span class="problem-icon">❌</span>
-          <div>
-            <strong>O bot não entende contexto.</strong>
-            <p>Dá respostas genéricas. O lead some sem avisar.</p>
-          </div>
+          <div><strong>O bot não entende contexto.</strong><p>Dá respostas genéricas. O lead some sem avisar.</p></div>
         </div>
       </div>
-      <div class="callout">
-        E o pior? <strong>Você nem sabe quantas vendas perdeu assim.</strong><br />
-        Porque o lead não avisa que foi embora. Ele simplesmente para de responder.
-      </div>
+      <div class="callout">E o pior? <strong>Você nem sabe quantas vendas perdeu assim.</strong><br />Porque o lead não avisa que foi embora. Ele simplesmente para de responder.</div>
     </div>
   </section>
 
-  <!-- JÁ TENTOU -->
+  <!-- ======= JÁ TENTOU ======= -->
   <section class="section reveal">
     <div class="container narrow">
       <div class="section-tag">Por que tudo que você já tentou falhou</div>
       <h2>O problema nunca foi a ferramenta.</h2>
       <p class="section-lead">Foi que <strong>nenhuma delas foi construída para se comportar como um vendedor humano de alto nível.</strong></p>
       <div class="tried-grid">
-        <div class="tried-item">
-          <span class="tried-label">ChatGPT genérico</span>
-          <span class="tried-result">Responde bem, mas não vende. Não tem lógica comercial.</span>
-        </div>
-        <div class="tried-item">
-          <span class="tried-label">Bots prontos</span>
-          <span class="tried-result">Scripts fixos. O lead faz uma pergunta fora do fluxo e trava.</span>
-        </div>
-        <div class="tried-item">
-          <span class="tried-label">CRM tradicional</span>
-          <span class="tried-result">Organiza. Não converte.</span>
-        </div>
-        <div class="tried-item">
-          <span class="tried-label">SDR humano</span>
-          <span class="tried-result">Caro, inconsistente, não trabalha 24h.</span>
-        </div>
-        <div class="tried-item">
-          <span class="tried-label">Disparos automáticos</span>
-          <span class="tried-result">Quantidade sem qualidade. Leads ignoram.</span>
-        </div>
+        <div class="tried-item"><span class="tried-label">ChatGPT genérico</span><span class="tried-result">Responde bem, mas não vende. Não tem lógica comercial.</span></div>
+        <div class="tried-item"><span class="tried-label">Bots prontos</span><span class="tried-result">Scripts fixos. O lead faz uma pergunta fora do fluxo e trava.</span></div>
+        <div class="tried-item"><span class="tried-label">CRM tradicional</span><span class="tried-result">Organiza. Não converte.</span></div>
+        <div class="tried-item"><span class="tried-label">SDR humano</span><span class="tried-result">Caro, inconsistente, não trabalha 24h.</span></div>
+        <div class="tried-item"><span class="tried-label">Disparos automáticos</span><span class="tried-result">Quantidade sem qualidade. Leads ignoram.</span></div>
       </div>
       <p class="section-lead" style="margin-top:2rem;">Elas automatizam. <strong>Não vendem.</strong></p>
     </div>
   </section>
 
-  <!-- VIRADA -->
+  <!-- ======= VIRADA ======= -->
   <section class="section section-gradient reveal">
     <div class="container narrow text-center">
       <div class="section-tag">A Virada</div>
@@ -122,7 +267,7 @@
     </div>
   </section>
 
-  <!-- MECANISMO -->
+  <!-- ======= MECANISMO ======= -->
   <section class="section section-dark reveal">
     <div class="container">
       <div class="mechanism-header text-center">
@@ -131,19 +276,16 @@
         <p class="mechanism-subtitle">com o <strong>Protocolo de Conversão Humana™</strong></p>
         <p class="section-lead">O único sistema de vendas com IA que combina comportamento humano real, leitura de perfil DISC e linguagem PNL para conduzir conversas que convertem — automaticamente.</p>
         <div class="not-tags">
-          <span>❌ Não é um bot</span>
-          <span>❌ Não é um CRM</span>
-          <span>❌ Não é um disparador</span>
+          <span>❌ Não é um bot</span><span>❌ Não é um CRM</span><span>❌ Não é um disparador</span>
         </div>
         <p class="is-tag">✅ <strong>É o seu melhor vendedor. Rodando 24h. Sem folga. Sem inconsistência.</strong></p>
       </div>
-
       <div class="layers-grid">
         <div class="layer-card reveal">
           <div class="layer-num">①</div>
           <h3>Delay Comportamental</h3>
-          <p>O KAIROS não responde em milissegundos como um robô. Ele simula o tempo real de digitação humana. O lead vê <strong>"digitando…"</strong> — e acredita que há uma pessoa do outro lado.</p>
-          <p class="layer-result">Esse único detalhe muda tudo. Leads que ignorariam um bot imediato continuam a conversa.</p>
+          <p>O KAIROS não responde em milissegundos. Ele simula o tempo real de digitação humana. O lead vê <strong>"digitando…"</strong> — e acredita que há uma pessoa do outro lado.</p>
+          <p class="layer-result">Leads que ignorariam um bot imediato continuam a conversa.</p>
         </div>
         <div class="layer-card reveal">
           <div class="layer-num">②</div>
@@ -161,18 +303,14 @@
           <div class="layer-num">③</div>
           <h3>Linguagem PNL</h3>
           <p>O KAIROS adapta vocabulário, ritmo e gatilhos com base no padrão de resposta do lead.</p>
-          <p>Não é script fixo — é escuta ativa automatizada.</p>
-          <p class="layer-result">Se o lead usa linguagem visual → o KAIROS espelha. Se está na dúvida → ancora.</p>
+          <p class="layer-result">Escuta ativa automatizada. Se o lead está na dúvida → ancora.</p>
         </div>
         <div class="layer-card reveal">
           <div class="layer-num">④</div>
           <h3>Lógica de Vendas Progressiva</h3>
           <p>Cada mensagem tem um objetivo:</p>
           <div class="sales-flow">
-            <span>Qualificar</span><span class="arrow">→</span>
-            <span>Aquecer</span><span class="arrow">→</span>
-            <span>Conduzir</span><span class="arrow">→</span>
-            <span>Fechar</span>
+            <span>Qualificar</span><span class="arrow">→</span><span>Aquecer</span><span class="arrow">→</span><span>Conduzir</span><span class="arrow">→</span><span>Fechar</span>
           </div>
           <p class="layer-result">Nada é aleatório. Nada é genérico. Nada parece robótico.</p>
         </div>
@@ -180,11 +318,11 @@
     </div>
   </section>
 
-  <!-- COMO FUNCIONA -->
+  <!-- ======= COMO FUNCIONA ======= -->
   <section class="section reveal">
     <div class="container narrow">
       <div class="section-tag">Como Funciona na Prática</div>
-      <h2>Enquanto Seu Concorrente Usa um Bot…<br />Você Usa um Vendedor Digital com Comportamento Humano</h2>
+      <h2>Enquanto Seu Concorrente Usa um Bot…<br />Você Usa um <span class="blue-text">Vendedor Digital</span> com Comportamento Humano</h2>
       <div class="steps">
         <div class="step"><span class="step-num">01</span><div><strong>Lead entra</strong> pelo WhatsApp, Instagram, site ou anúncio</div></div>
         <div class="step"><span class="step-num">02</span><div><strong>KAIROS lê o perfil</strong> em tempo real via DISC</div></div>
@@ -197,7 +335,7 @@
     </div>
   </section>
 
-  <!-- PROVA -->
+  <!-- ======= PROVA ======= -->
   <section class="section section-dark reveal">
     <div class="container">
       <div class="section-tag text-center">Prova</div>
@@ -207,25 +345,25 @@
           <div class="proof-icon">🏥</div>
           <div class="proof-type">Clínica de Estética — São Paulo</div>
           <div class="proof-before"><strong>Antes:</strong> 1 atendente respondendo manualmente. 40% dos leads sem resposta.</div>
-          <div class="proof-after"><strong>Depois:</strong> <span class="proof-highlight">42 reuniões qualificadas em 30 dias.</span> 0 leads sem resposta. Atendente focada só no fechamento.</div>
+          <div class="proof-after"><strong>Depois:</strong> <span class="proof-highlight">42 reuniões qualificadas em 30 dias.</span> 0 leads sem resposta.</div>
         </div>
         <div class="proof-card reveal">
           <div class="proof-icon">🏠</div>
           <div class="proof-type">Imobiliária — Rio de Janeiro</div>
           <div class="proof-before"><strong>Antes:</strong> Leads de anúncios esfriando por demora no retorno.</div>
-          <div class="proof-after"><strong>Depois:</strong> <span class="proof-highlight">3x mais respostas em leads frios.</span> Taxa de agendamento dobrou em 3 semanas.</div>
+          <div class="proof-after"><strong>Depois:</strong> <span class="proof-highlight">3x mais respostas em leads frios.</span> Agendamentos dobraram em 3 semanas.</div>
         </div>
         <div class="proof-card reveal">
           <div class="proof-icon">🎓</div>
           <div class="proof-type">Infoprodutor — Curso Online</div>
-          <div class="proof-before"><strong>Antes:</strong> Equipe de SDR humano custando R$8.000/mês com resultado inconsistente.</div>
+          <div class="proof-before"><strong>Antes:</strong> SDR humano custando R$8.000/mês com resultado inconsistente.</div>
           <div class="proof-after"><strong>Depois:</strong> <span class="proof-highlight">Redução de 70% no atendimento manual.</span> Mesmo resultado com 1/3 do custo.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PARA QUEM É -->
+  <!-- ======= PARA QUEM É ======= -->
   <section class="section reveal">
     <div class="container narrow">
       <div class="section-tag">Para Quem É</div>
@@ -235,16 +373,13 @@
         <div class="audience-item">✅ Imobiliárias</div>
         <div class="audience-item">✅ Prestadores de serviço</div>
         <div class="audience-item">✅ Infoprodutores e mentores</div>
-        <div class="audience-item">✅ Negócios locais com alto volume de mensagens</div>
+        <div class="audience-item">✅ Negócios com alto volume de mensagens</div>
       </div>
-      <div class="callout" style="margin-top:2rem;">
-        <strong>Se você recebe leads todo dia e sente que está deixando dinheiro na mesa…</strong><br />
-        Isso foi feito para você.
-      </div>
+      <div class="callout" style="margin-top:2rem;"><strong>Se você recebe leads todo dia e sente que está deixando dinheiro na mesa…</strong><br />Isso foi feito para você.</div>
     </div>
   </section>
 
-  <!-- OFERTA -->
+  <!-- ======= OFERTA ======= -->
   <section class="section section-dark reveal">
     <div class="container narrow">
       <div class="section-tag text-center">A Oferta</div>
@@ -260,7 +395,7 @@
     </div>
   </section>
 
-  <!-- GARANTIA -->
+  <!-- ======= GARANTIA ======= -->
   <section class="section reveal">
     <div class="container narrow text-center">
       <div class="guarantee-box">
@@ -273,7 +408,7 @@
     </div>
   </section>
 
-  <!-- CTA FINAL -->
+  <!-- ======= CTA FINAL ======= -->
   <section class="section section-cta reveal" id="cta">
     <div class="container narrow text-center">
       <h2>Chega de perder lead para concorrente<br />que responde mais rápido.</h2>
@@ -282,12 +417,26 @@
         <p>Chega de vendas inconsistentes por falta de follow-up.</p>
       </div>
       <p class="cta-big"><strong>Ative agora o único sistema que vende como humano — 24h por dia.</strong></p>
-      <a href="#" class="btn-cta btn-cta-large">QUERO ATIVAR O KAIROS AGORA →</a>
-      <p class="cta-urgency">⚡ Vagas limitadas por período de onboarding</p>
+
+      <div class="countdown-box countdown-final">
+        <span class="cd-label">⚡ Oferta encerra em:</span>
+        <div class="countdown-timer">
+          <div class="time-block"><span id="cd-h2">23</span><small>HRS</small></div>
+          <div class="time-sep">:</div>
+          <div class="time-block"><span id="cd-m2">59</span><small>MIN</small></div>
+          <div class="time-sep">:</div>
+          <div class="time-block"><span id="cd-s2">59</span><small>SEG</small></div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/5511999999999?text=Quero%20ativar%20o%20KAIROS%20AI" class="btn-cta btn-cta-large" target="_blank">
+        QUERO ATIVAR O KAIROS AGORA →
+      </a>
+      <p class="cta-urgency">⚡ Apenas <strong id="vagas-count2">7</strong> vagas restantes · Configuração em 48h</p>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ======= FOOTER ======= -->
   <footer class="footer">
     <div class="container text-center">
       <p class="footer-brand">KAIROS AI Conversion Engine™</p>
