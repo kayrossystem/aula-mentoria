@@ -1,3 +1,74 @@
+// ===== SUPABASE CONFIG =====
+const SUPA_URL = 'https://wamwesbnyvflajmkeqhg.supabase.co';
+const SUPA_KEY = 'sb_publishable_A39ksXNasaS7Qj5khpgRBg_rw9bhW0y';
+
+// ===== LEAD FORM =====
+(function initLeadForm() {
+  const form = document.getElementById('lead-form');
+  if (!form) return;
+
+  const successEl = document.getElementById('form-success');
+  const errorEl   = document.getElementById('form-error');
+  const submitBtn = form.querySelector('.form-submit-btn');
+
+  function setError(field) {
+    field.classList.add('error');
+    field.addEventListener('input', () => field.classList.remove('error'), { once: true });
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nome     = document.getElementById('f-nome');
+    const whatsapp = document.getElementById('f-whatsapp');
+    const segmento = document.getElementById('f-segmento');
+
+    let valid = true;
+    if (!nome.value.trim())     { setError(nome);     valid = false; }
+    if (!whatsapp.value.trim()) { setError(whatsapp);  valid = false; }
+    if (!segmento.value)        { setError(segmento); valid = false; }
+    if (!valid) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+    successEl.style.display = 'none';
+    errorEl.style.display   = 'none';
+
+    try {
+      const res = await fetch(`${SUPA_URL}/rest/v1/leads`, {
+        method: 'POST',
+        headers: {
+          'apikey':        SUPA_KEY,
+          'Authorization': `Bearer ${SUPA_KEY}`,
+          'Content-Type':  'application/json',
+          'Prefer':        'return=minimal',
+        },
+        body: JSON.stringify({
+          nome:     nome.value.trim(),
+          whatsapp: whatsapp.value.trim(),
+          segmento: segmento.value,
+        }),
+      });
+
+      if (res.ok || res.status === 201) {
+        form.reset();
+        successEl.style.display = 'block';
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        const err = await res.json().catch(() => ({}));
+        console.error('Supabase error:', err);
+        errorEl.style.display = 'block';
+      }
+    } catch (err) {
+      console.error('Network error:', err);
+      errorEl.style.display = 'block';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'QUERO ATIVAR O KAIROS AGORA →';
+    }
+  });
+})();
+
 // ===== REVEAL ON SCROLL =====
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
