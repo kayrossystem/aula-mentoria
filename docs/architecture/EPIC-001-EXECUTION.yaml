@@ -1,0 +1,65 @@
+epic:
+  id: EPIC-001
+  title: "Estabilização da Base de Qualidade"
+  prioridade: P0
+  owner: "@pm (Morgan)"
+  status: Ready
+  score_atual: 4.7
+  score_meta: 6.5
+  prazo: "Sprint 1-2 (4 semanas)"
+  criado_em: 2026-03-23
+  fonte: "Brownfield Discovery Fase 9 — TECHNICAL-DEBT-REPORT.md"
+
+objetivo_de_negocio: |
+  O AIOS Core v5.0.3 possui dois riscos P0 que bloqueiam qualquer release seguro:
+  cobertura de testes real abaixo de 40% (com 20+ testes deliberadamente desabilitados)
+  e type safety completamente desativado em 243 arquivos core (checkJs: false).
+
+  Esses dois problemas combinados significam que mudanças no core podem introduzir
+  regressões silenciosas que só serão descobertas pelo usuário final — não pela suíte
+  de testes. Um framework de orquestração de IA sem essas redes de segurança é
+  inviável para uso em produção confiável.
+
+  Este epic elimina os P0s e estabelece o piso mínimo de qualidade antes de
+  qualquer nova feature ser desenvolvida.
+
+gate_de_saida:
+  - "Cobertura de testes global >= 60%"
+  - "Zero testes desabilitados (xit, xtest, skip)"
+  - "checkJs: true ativo sem erros de tipo bloqueantes"
+  - "CLI deprecated (aiox-minimal) fora do caminho principal"
+  - "ADR publicado: @aiox/installer é o canônico"
+
+stories:
+  - id: "1.1"
+    titulo: "Habilitar checkJs e resolver erros de tipo bloqueantes"
+    pontos: 8
+    status: Ready
+    arquivo: "docs/stories/1.1.story.md"
+
+  - id: "1.2"
+    titulo: "Reativar e corrigir os 20+ testes desabilitados"
+    pontos: 13
+    status: Ready
+    arquivo: "docs/stories/1.2.story.md"
+    depende_de: "1.1"
+
+  - id: "1.3"
+    titulo: "Depreciar aiox-minimal com redirect para CLI principal"
+    pontos: 3
+    status: Ready
+    arquivo: "docs/stories/1.3.story.md"
+
+  - id: "1.4"
+    titulo: "Publicar ADR e canonizar @aiox/installer"
+    pontos: 2
+    status: Ready
+    arquivo: "docs/stories/1.4.story.md"
+
+total_pontos: 26
+dependencias_externas: []
+riscos_mitigados:
+  - "P0.1: Cobertura de testes < 40%"
+  - "P0.2: Type safety desativado (checkJs: false)"
+  - "P1.4: CLI deprecated ativo"
+  - "P1.2: Dois installers sem canônico"

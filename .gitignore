@@ -46,3 +46,4 @@ temp/
 # Zip files e Mac artifacts
 *.zip
 __MACOSX/
+.vercel

@@ -1,0 +1,62 @@
+epic:
+  id: EPIC-003
+  title: "Developer Experience"
+  prioridade: P2
+  owner: "@pm (Morgan)"
+  status: Backlog
+  score_atual: 4.7
+  score_meta: 8.0
+  prazo: "Sprint 5-6 (semanas 9-12)"
+  criado_em: 2026-03-23
+  fonte: "Brownfield Discovery Fase 9 — TECHNICAL-DEBT-REPORT.md"
+  depende_de: EPIC-001
+
+objetivo_de_negocio: |
+  Com a base técnica estabilizada (EPIC-001) e a arquitetura consolidada (EPIC-002),
+  este epic ataca problemas de Developer Experience que afetam adoção e crescimento:
+
+  1. Usuários em v4.31 não têm caminho claro de upgrade — fragmenta a base instalada
+  2. MCP custom presets são uma funcionalidade invisível — usuários criam workarounds
+     manuais para algo que o sistema já resolve
+  3. API docs manuais divergem do código — custo de manutenção proibitivo
+
+  Este epic não tem dependência técnica forte do EPIC-002 (pode ser iniciado em
+  paralelo após EPIC-001), mas tem menor prioridade de negócio.
+
+gate_de_saida:
+  - "docs/migration/v4-to-v5.md publicado com caminho de upgrade completo"
+  - "MCP custom presets documentados com exemplos funcionais"
+  - "JSDoc em 100% dos arquivos públicos da API core"
+  - "Geração automática de API docs via CI/CD"
+  - "Score de Documentação de Código >= 7.0"
+
+stories:
+  - id: "3.1"
+    titulo: "Criar migration guide v4.31 → v5.0.3"
+    pontos: 5
+    status: Backlog
+    arquivo: "docs/stories/3.1.story.md"
+    depende_de: "EPIC-001 concluído"
+
+  - id: "3.2"
+    titulo: "Documentar MCP custom presets com exemplos"
+    pontos: 3
+    status: Backlog
+    arquivo: "docs/stories/3.2.story.md"
+    depende_de: null
+
+  - id: "3.3"
+    titulo: "Implementar JSDoc em arquivos core críticos e auto-geração de docs"
+    pontos: 8
+    status: Backlog
+    arquivo: "docs/stories/3.3.story.md"
+    depende_de: "EPIC-001 concluído"
+
+total_pontos: 16
+dependencias_externas:
+  - "EPIC-001 gate de saída satisfeito (para 3.1 e 3.3)"
+  - "3.2 pode ser executada imediatamente (sem dependência)"
+riscos_mitigados:
+  - "P2.1: Documentação de API não auto-gerada"
+  - "P2.2: Migration guide v4.31→v5.0.3 ausente"
+  - "P2.3: MCP custom presets não documentados"

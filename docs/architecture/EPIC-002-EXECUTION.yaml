@@ -1,0 +1,68 @@
+epic:
+  id: EPIC-002
+  title: "Consolidação de Arquitetura"
+  prioridade: P1
+  owner: "@pm (Morgan)"
+  status: Backlog
+  score_atual: 4.7
+  score_meta: 7.5
+  prazo: "Sprint 3-4 (semanas 5-8)"
+  criado_em: 2026-03-23
+  fonte: "Brownfield Discovery Fase 9 — TECHNICAL-DEBT-REPORT.md"
+  depende_de: EPIC-001
+
+objetivo_de_negocio: |
+  Com o piso de qualidade estabelecido pelo EPIC-001, este epic ataca os problemas
+  estruturais que criam gargalos operacionais: dois god objects concentram toda a
+  lógica de orquestração em arquivos de 36-54KB (inviabilizando testes e revisão),
+  e o hook system tem 5 implementações independentes por IDE sem abstração comum
+  (multiplicando o custo de manutenção por 5).
+
+  O objetivo é transformar o sistema de "funciona, mas é intocável" para
+  "funciona, e qualquer dev consegue entender e modificar com segurança".
+
+  Gate de entrada: EPIC-001 concluído (cobertura >= 60%, checkJs ativo).
+
+gate_de_saida:
+  - "Nenhum arquivo core com mais de 20KB"
+  - "master-orchestrator.js decomposto em >= 3 módulos com cobertura >= 80% cada"
+  - "workflow-executor.js decomposto em >= 2 módulos com cobertura >= 80% cada"
+  - "Abstração de hook interface aprovada e implementada para Claude Code + Cursor"
+  - "Roadmap de migração das outras 3 IDEs definido em stories"
+  - "Cobertura global >= 70%"
+
+stories:
+  - id: "2.1"
+    titulo: "Mapear e decompor master-orchestrator.js (54KB)"
+    pontos: 13
+    status: Backlog
+    arquivo: "docs/stories/2.1.story.md"
+    depende_de: "EPIC-001 concluído"
+
+  - id: "2.2"
+    titulo: "Mapear e decompor workflow-executor.js (36KB)"
+    pontos: 8
+    status: Backlog
+    arquivo: "docs/stories/2.2.story.md"
+    depende_de: "2.1 (parcial — pode ser paralelo)"
+
+  - id: "2.3"
+    titulo: "Projetar interface abstrata de hook system"
+    pontos: 5
+    status: Backlog
+    arquivo: "docs/stories/2.3.story.md"
+    depende_de: "EPIC-001 concluído"
+
+  - id: "2.4"
+    titulo: "Implementar hook adapter para Claude Code e Cursor"
+    pontos: 8
+    status: Backlog
+    arquivo: "docs/stories/2.4.story.md"
+    depende_de: "2.3"
+
+total_pontos: 34
+dependencias_externas:
+  - "EPIC-001 gate de saída satisfeito"
+riscos_mitigados:
+  - "P1.1: God objects master-orchestrator.js (54KB) e workflow-executor.js (36KB)"
+  - "P1.3: Hook system fragmentado em 5 implementações independentes"
