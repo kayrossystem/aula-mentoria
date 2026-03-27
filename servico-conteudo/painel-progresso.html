@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="30">
+  <title>Viral Lab — Painel de Construção do Sistema</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0a0a0f;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 32px 24px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .logo {
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #6366f1;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #a78bfa, #6366f1, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      font-size: 15px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto 48px;
+    }
+
+    .stat-card {
+      background: #12121a;
+      border: 1px solid #1e1e2e;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: #a78bfa;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .progress-bar-container {
+      max-width: 900px;
+      margin: 0 auto 48px;
+      background: #12121a;
+      border: 1px solid #1e1e2e;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .progress-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .progress-title span:first-child {
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .progress-pct {
+      font-size: 24px;
+      font-weight: 800;
+      color: #a78bfa;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: #1e1e2e;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1, #a78bfa, #38bdf8);
+      border-radius: 99px;
+      transition: width 1s ease;
+      width: 3%;
+    }
+
+    .phases-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .phase {
+      background: #12121a;
+      border: 1px solid #1e1e2e;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      cursor: pointer;
+    }
+
+    .phase-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .phase-info { flex: 1; }
+
+    .phase-name {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+
+    .phase-desc {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .phase-badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-pending { background: #1e1e2e; color: #64748b; }
+    .badge-building { background: #1c1917; color: #f59e0b; border: 1px solid #92400e; }
+    .badge-done { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+
+    .phase-files {
+      border-top: 1px solid #1e1e2e;
+      padding: 12px 20px 16px;
+      display: none;
+    }
+
+    .phase-files.open { display: block; }
+
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #0f0f17;
+    }
+
+    .file-item:last-child { border-bottom: none; }
+
+    .file-status {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .status-done { background: #052e16; color: #4ade80; }
+    .status-building { background: #1c1917; color: #f59e0b; }
+    .status-pending { background: #1e1e2e; color: #475569; }
+
+    .file-name {
+      font-size: 13px;
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .file-agents {
+      font-size: 11px;
+      color: #6366f1;
+    }
+
+    .agents-section {
+      max-width: 900px;
+      margin: 48px auto 0;
+    }
+
+    .agents-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+
+    .agent-tag {
+      background: #12121a;
+      border: 1px solid #1e1e2e;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-align: center;
+    }
+
+    .agent-tag.active {
+      border-color: #4f46e5;
+      color: #a78bfa;
+      background: #0f0f1f;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #1e1e2e;
+      color: #334155;
+      font-size: 12px;
+    }
+
+    .current-building {
+      max-width: 900px;
+      margin: 0 auto 32px;
+      background: #0f0f1f;
+      border: 1px solid #4f46e5;
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pulse {
+      width: 10px;
+      height: 10px;
+      background: #6366f1;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .current-text {
+      font-size: 13px;
+      color: #a78bfa;
+      font-weight: 500;
+    }
+
+    .tag-squad { color: #38bdf8; }
+    .tag-aiox { color: #4ade80; }
+    .tag-hormozi { color: #f59e0b; }
+
+    /* Phase colors */
+    .phase-0 .phase-icon { background: #0f0f1f; }
+    .phase-1 .phase-icon { background: #0f1a0f; }
+    .phase-2 .phase-icon { background: #0f0f1f; }
+    .phase-3 .phase-icon { background: #1a0f0f; }
+    .phase-4 .phase-icon { background: #0f0f1a; }
+    .phase-5 .phase-icon { background: #1a1a0f; }
+    .phase-6 .phase-icon { background: #0f1a1a; }
+    .phase-7 .phase-icon { background: #1a0f1a; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo">Viral Lab</div>
+    <h1>Sistema de Resultado Real</h1>
+    <p class="subtitle">Construção do sistema completo de gestão de conteúdo com IA — acompanhe em tempo real</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number" id="stat-done">1</div>
+      <div class="stat-label">Arquivos prontos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color:#f59e0b">16</div>
+      <div class="stat-label">Total a construir</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color:#38bdf8">47+</div>
+      <div class="stat-label">Agentes envolvidos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color:#4ade80">8</div>
+      <div class="stat-label">Fases do sistema</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color:#f472b6">R$20k</div>
+      <div class="stat-label">Ticket mínimo</div>
+    </div>
+  </div>
+
+  <div class="progress-bar-container">
+    <div class="progress-title">
+      <span>Progresso geral da construção</span>
+      <span class="progress-pct" id="pct-text">6%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width:6%"></div>
+    </div>
+  </div>
+
+  <div class="current-building">
+    <div class="pulse"></div>
+    <div class="current-text">✅ Sistema completo — 15 arquivos blindados em 7 módulos | Todas as 8 regras ativas</div>
+  </div>
+
+  <div class="phases-container">
+
+    <!-- FASE 0 -->
+    <div class="phase phase-0">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-icon">🔐</div>
+        <div class="phase-info">
+          <div class="phase-name">FASE 00 — Validação de Cliente</div>
+          <div class="phase-desc">Antes de aceitar: GO ou NO-GO com Finch + Hormozi</div>
+        </div>
+        <span class="phase-badge badge-done">✅ Concluída</span>
+      </div>
+      <div class="phase-files open">
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">processo-validacao-cliente.md</div>
+          <div class="file-agents"><span class="tag-squad">Finch</span> · <span class="tag-hormozi">hormozi-audit</span> · <span class="tag-aiox">@analyst</span></div>
+        </div>
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">template-diagnostico-cliente.md</div>
+          <div class="file-agents"><span class="tag-hormozi">hormozi-models</span> · <span class="tag-aiox">@pm</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 1 -->
+    <div class="phase phase-1">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-icon">🚀</div>
+        <div class="phase-info">
+          <div class="phase-name">FASE 01 — Onboarding</div>
+          <div class="phase-desc">Briefing profundo + alinhamento de expectativas + Notion</div>
+        </div>
+        <span class="phase-badge badge-done">✅ Concluída</span>
+      </div>
+      <div class="phase-files">
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">formulario-briefing-cliente.md</div>
+          <div class="file-agents"><span class="tag-aiox">@pm</span> · <span class="tag-squad">Pedro Valério</span></div>
+        </div>
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">alinhamento-expectativas.md</div>
+          <div class="file-agents"><span class="tag-hormozi">hormozi-advisor</span> · <span class="tag-aiox">@po</span></div>
+        </div>
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">checklist-onboarding.md</div>
+          <div class="file-agents"><span class="tag-squad">Pedro Valério</span> · <span class="tag-aiox">@sm</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 2 -->
+    <div class="phase phase-2">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-icon">🧠</div>
+        <div class="phase-info">
+          <div class="phase-name">FASE 02 — Extração de Conhecimento + Auditoria</div>
+          <div class="phase-desc">Alan Nicolas extrai o 0,8% do nicho + auditoria com métricas</div>
+        </div>
+        <span class="phase-badge badge-done">✅ Concluída</span>
+      </div>
+      <div class="phase-files">
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">processo-auditoria.md</div>
+          <div class="file-agents"><span class="tag-squad">Alan</span> · <span class="tag-aiox">@analyst</span> · <span class="tag-squad">competitor-analyst</span></div>
+        </div>
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">template-relatorio-auditoria.md</div>
+          <div class="file-agents"><span class="tag-aiox">@data-engineer</span> · <span class="tag-squad">avinash-kaushik</span> · <span class="tag-squad">pedro-sobral</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 3 -->
+    <div class="phase phase-3">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-icon">🎯</div>
+        <div class="phase-info">
+          <div class="phase-name">FASE 03 — Posicionamento</div>
+          <div class="phase-desc">Brand Squad + Storytelling + hormozi-hooks = posicionamento irresistível</div>
+        </div>
+        <span class="phase-badge badge-done">✅ Concluída</span>
+      </div>
+      <div class="phase-files">
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">processo-posicionamento.md</div>
+          <div class="file-agents"><span class="tag-squad">brand-chief</span> · <span class="tag-squad">donald-miller</span> · <span class="tag-squad">marty-neumeier</span> · <span class="tag-squad">oren-klaff</span> · <span class="tag-hormozi">hormozi-hooks</span></div>
+        </div>
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">template-entrega-posicionamento.md</div>
+          <div class="file-agents"><span class="tag-squad">brand-chief</span> · <span class="tag-aiox">@po Pax</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 4 -->
+    <div class="phase phase-4">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-icon">📅</div>
+        <div class="phase-info">
+          <div class="phase-name">FASE 04 — Criação Mensal</div>
+          <div class="phase-desc">20 peças/mês com estratégia de crescimento real de seguidores</div>
+        </div>
+        <span class="phase-badge badge-done">✅ Concluída</span>
+      </div>
+      <div class="phase-files">
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">processo-mensal.md</div>
+          <div class="file-agents"><span class="tag-squad">content-chief</span> · <span class="tag-squad">pedro-sobral</span> · <span class="tag-squad">carousel-creator</span> · <span class="tag-squad">reels-creator</span> · <span class="tag-squad">stories-strategist</span></div>
+        </div>
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">template-calendario-mensal.md</div>
+          <div class="file-agents"><span class="tag-squad">content-planner</span> · <span class="tag-aiox">@po Pax</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 5 -->
+    <div class="phase phase-5">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-icon">📦</div>
+        <div class="phase-info">
+          <div class="phase-name">FASE 05 — Entrega & Experiência do Cliente</div>
+          <div class="phase-desc">Notion como painel visual + Drive + mensagens prontas</div>
+        </div>
+        <span class="phase-badge badge-done">✅ Concluída</span>
+      </div>
+      <div class="phase-files">
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">experiencia-cliente-notion.md</div>
+          <div class="file-agents"><span class="tag-aiox">@ux-design-expert</span> · <span class="tag-hormozi">hormozi-retention</span> · <span class="tag-squad">nick-mehta</span></div>
+        </div>
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">modelo-entrega-comunicacao.md</div>
+          <div class="file-agents"><span class="tag-aiox">@ux-design-expert</span> · <span class="tag-squad">nick-mehta</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 6 -->
+    <div class="phase phase-6">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-icon">📊</div>
+        <div class="phase-info">
+          <div class="phase-name">FASE 06 — Métricas & Resultados</div>
+          <div class="phase-desc">Dashboard de crescimento + relatório mensal do cliente</div>
+        </div>
+        <span class="phase-badge badge-done">✅ Concluída</span>
+      </div>
+      <div class="phase-files">
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">processo-acompanhamento-mensal.md</div>
+          <div class="file-agents"><span class="tag-squad">avinash-kaushik</span> · <span class="tag-squad">sean-ellis</span> · <span class="tag-aiox">@data-engineer</span></div>
+        </div>
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">template-relatorio-resultados.md</div>
+          <div class="file-agents"><span class="tag-squad">peter-fader</span> · <span class="tag-squad">nick-mehta</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 7 -->
+    <div class="phase phase-7">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-icon">🏆</div>
+        <div class="phase-info">
+          <div class="phase-name">FASE 07 — Revisão Trimestral</div>
+          <div class="phase-desc">Advisory Board + hormozi-scale + C-Level = estratégia de crescimento</div>
+        </div>
+        <span class="phase-badge badge-done">✅ Concluída</span>
+      </div>
+      <div class="phase-files">
+        <div class="file-item">
+          <div class="file-status status-done">✓</div>
+          <div class="file-name">processo-revisao-trimestral.md</div>
+          <div class="file-agents"><span class="tag-squad">board-chair</span> · <span class="tag-squad">ray-dalio</span> · <span class="tag-squad">charlie-munger</span> · <span class="tag-squad">reid-hoffman</span> · <span class="tag-hormozi">hormozi-scale</span> · <span class="tag-squad">cmo-architect</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="agents-section">
+    <div class="agents-title">Agentes Mobilizados neste Sistema</div>
+    <div class="agents-grid">
+      <div class="agent-tag active">Thiago Finch</div>
+      <div class="agent-tag active">Alan Nicolas</div>
+      <div class="agent-tag active">Pedro Valério</div>
+      <div class="agent-tag active">@pm Morgan</div>
+      <div class="agent-tag active">@architect Aria</div>
+      <div class="agent-tag active">@analyst Alex</div>
+      <div class="agent-tag active">@po Pax</div>
+      <div class="agent-tag active">@qa Quinn</div>
+      <div class="agent-tag active">@sm River</div>
+      <div class="agent-tag active">@ux-design-expert Uma</div>
+      <div class="agent-tag active">@data-engineer Dara</div>
+      <div class="agent-tag active">@devops Gage</div>
+      <div class="agent-tag">content-chief</div>
+      <div class="agent-tag">competitor-analyst</div>
+      <div class="agent-tag">content-validator</div>
+      <div class="agent-tag">positioning-expert</div>
+      <div class="agent-tag">carousel-creator</div>
+      <div class="agent-tag">reels-creator</div>
+      <div class="agent-tag">stories-strategist</div>
+      <div class="agent-tag">strategist</div>
+      <div class="agent-tag">content-planner</div>
+      <div class="agent-tag">content-repurposer</div>
+      <div class="agent-tag">brand-chief</div>
+      <div class="agent-tag">donald-miller</div>
+      <div class="agent-tag">marty-neumeier</div>
+      <div class="agent-tag">hormozi-chief</div>
+      <div class="agent-tag">hormozi-audit</div>
+      <div class="agent-tag">hormozi-offers</div>
+      <div class="agent-tag">hormozi-hooks</div>
+      <div class="agent-tag">hormozi-content</div>
+      <div class="agent-tag">hormozi-retention</div>
+      <div class="agent-tag">hormozi-scale</div>
+      <div class="agent-tag">hormozi-advisor</div>
+      <div class="agent-tag">pedro-sobral</div>
+      <div class="agent-tag">avinash-kaushik</div>
+      <div class="agent-tag">sean-ellis</div>
+      <div class="agent-tag">peter-fader</div>
+      <div class="agent-tag">nick-mehta</div>
+      <div class="agent-tag">oren-klaff</div>
+      <div class="agent-tag">kindra-hall</div>
+      <div class="agent-tag">dan-kennedy</div>
+      <div class="agent-tag">board-chair</div>
+      <div class="agent-tag">ray-dalio</div>
+      <div class="agent-tag">charlie-munger</div>
+      <div class="agent-tag">reid-hoffman</div>
+      <div class="agent-tag">cmo-architect</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Viral Lab · Sistema de Gestão de Conteúdo com IA · Construído por Orion (AIOX Master) · Atualize a página para ver o progresso mais recente
+  </div>
+
+  <script>
+    function togglePhase(header) {
+      const files = header.nextElementSibling;
+      files.classList.toggle('open');
+    }
+
+    // Auto-calc progress
+    const done = document.querySelectorAll('.status-done').length;
+    const total = document.querySelectorAll('.file-status').length;
+    const pct = Math.round((done / total) * 100);
+    document.getElementById('pct-text').textContent = pct + '%';
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('stat-done').textContent = done;
+  </script>
+
+</body>
+</html>
